@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :url
+  resources :url, only: :create do 
+    collection do
+      get 'get_original_url', to: 'url#find_original_url'
+    end
+  end
 end
